@@ -21,6 +21,20 @@ class dl_uptostream_com extends Download {
 			$data = $this->lib->curl($url, $this->lib->cookie, $post);
 			if(stristr($data,'Wrong password'))  $this->error("wrongpass", true, false, 2);
 			elseif(
+			preg_match('/<source src=\'(.*?)\' type=\'video\/mp4\' data-res=\'1080p\' lang=\'French\'/', $data, $link)) return trim(str_replace('//', 'http://', $link[1]));
+			elseif(
+			preg_match('/<source src=\'(.*?)\' type=\'video\/mp4\' data-res=\'1080p\'/', $data, $link)) return trim(str_replace('//', 'http://', $link[1]));
+			elseif(
+			preg_match('/<source src=\'(.*?)\' type=\'video\/mp4\' data-res=\'720p\' lang=\'French\'/', $data, $link)) return trim(str_replace('//', 'http://', $link[1]));
+			elseif(
+			preg_match('/<source src=\'(.*?)\' type=\'video\/mp4\' data-res=\'720p\'/', $data, $link)) return trim(str_replace('//', 'http://', $link[1]));
+			elseif(
+			preg_match('/<source src=\'(.*?)\' type=\'video\/mp4\' data-res=\'480p\' lang=\'French\'/', $data, $link)) return trim(str_replace('//', 'http://', $link[1]));
+			elseif(
+			preg_match('/<source src=\'(.*?)\' type=\'video\/mp4\' data-res=\'480p\'/', $data, $link)) return trim(str_replace('//', 'http://', $link[1]));
+			elseif(
+			preg_match('/<source src=\'(.*?)\' type=\'video\/mp4\' data-res=\'360p\' lang=\'French\'/', $data, $link)) return trim(str_replace('//', 'http://', $link[1]));
+			elseif(
 			preg_match('/<source src=\'(.*?)\' type=\'video\/mp4\' data-res=\'360p\'/', $data, $link)) return trim(str_replace('//', 'http://', $link[1]));
 			
 		}
@@ -30,7 +44,22 @@ class dl_uptostream_com extends Download {
 			$post = $this->parseForm($this->lib->cut_str($data, '<form name="F1"', '</form>'));
 			$data = $this->lib->curl($url, $this->lib->cookie, $post);
 			if(
-			preg_match('/<source src=\'(.*?)\' type=\'video\/mp4\' data-res=\'360p\'/', $data, $link)) return trim(str_replace('//', 'http://', $link[1]));
+preg_match('/<source src=\'(.*?)\' type=\'video\/mp4\' data-res=\'1080p\' lang=\'French\'/', $data, $link)) return trim(str_replace('//', 'http://', $link[1]));
+                       elseif(
+preg_match('/<source src=\'(.*?)\' type=\'video\/mp4\' data-res=\'1080p\'/', $data, $link)) return trim(str_replace('//', 'http://', $link[1]));
+		       elseif(
+preg_match('/<source src=\'(.*?)\' type=\'video\/mp4\' data-res=\'720p\' lang=\'French\'/', $data, $link)) return trim(str_replace('//', 'http://', $link[1]));
+		       elseif(
+preg_match('/<source src=\'(.*?)\' type=\'video\/mp4\' data-res=\'720p\'/', $data, $link)) return trim(str_replace('//', 'http://', $link[1]));
+		       elseif(
+preg_match('/<source src=\'(.*?)\' type=\'video\/mp4\' data-res=\'480p\' lang=\'French\'/', $data, $link)) return trim(str_replace('//', 'http://', $link[1]));
+		       elseif(
+preg_match('/<source src=\'(.*?)\' type=\'video\/mp4\' data-res=\'480p\'/', $data, $link)) return trim(str_replace('//', 'http://', $link[1]));
+		       elseif(
+preg_match('/<source src=\'(.*?)\' type=\'video\/mp4\' data-res=\'360p\' lang=\'French\'/', $data, $link)) return trim(str_replace('//', 'http://', $link[1]));
+		       elseif(
+preg_match('/<source src=\'(.*?)\' type=\'video\/mp4\' data-res=\'360p\'/', $data, $link)) return trim(str_replace('//', 'http://', $link[1]));
+
 		}
 		else return trim(str_replace('https', 'http', trim($this->redirect))); 
 		return false;
@@ -40,9 +69,7 @@ class dl_uptostream_com extends Download {
 * Open Source Project
 * Vinaget by ..::[H]::..
 * Version: 2.7.0
-* Uptobox Download Plugin
-* Downloader Class By [FZ]
-* Support file password by giaythuytinh176 [26.7.2013][18.9.2013][Fixed]
-* Fixed Login: KulGuY [16.01.2015]
+* Uptostream Download Plugin
+* Downloader Class By amidevous
 */
 ?>
